@@ -535,7 +535,7 @@ getOrderStatus()
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/bitoex/bitopro-api-node. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
+Bug reports and pull requests are welcome on GitHub at https://github.com/bitoex/bitopro-api-node and this project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [Contributor Covenant](http://contributor-covenant.org) code of conduct.
 
 1. Fork it
 2. Create your feature branch (```git checkout -b my-new-feature```).
