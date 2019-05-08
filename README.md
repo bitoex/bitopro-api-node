@@ -4,20 +4,6 @@ SDK for the [BitoPro](https://www.bitopro.com/) API.
 
 [Bitopro official API document](https://developer.bitopro.com/docs)
 
-### Installation
-
-    npm install bitopro-api-node
-
-### Getting started
-
-Create BitoPro client. Pass api keys only if
-you are going to do authenticated calls. You can create an api key
-[here](https://www.bitopro.com/api).
-
-```js
-const BitoPro = require('bitopro-api-node')
-const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
-```
 - [bitopro-api-node](#bitopro-api-node)
     - [Installation](#installation)
     - [Getting started](#getting-started)
@@ -36,6 +22,21 @@ const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
       - [getOrder](#getorder)
   - [Contributing](#contributing)
   - [License](#license)
+
+### Installation
+
+    npm install bitopro-api-node
+
+### Getting started
+
+Create BitoPro client. Pass api keys only if
+you are going to do authenticated calls. You can create an api key
+[here](https://www.bitopro.com/api).
+
+```js
+const BitoPro = require('bitopro-api-node')
+const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
+```
 
 ### Rate Limit
 
