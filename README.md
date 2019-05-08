@@ -1,5 +1,7 @@
 # bitopro-api-node
 
+[![npm version](https://badge.fury.io/js/bitopro-api-node.svg)](https://badge.fury.io/js/bitopro-api-node)
+
 SDK for the [BitoPro](https://www.bitopro.com/) API.
 
 [Bitopro official API document](https://developer.bitopro.com/docs)
