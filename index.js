@@ -118,7 +118,7 @@ class BitoPro {
     return res.data
   }
 
-  async getOrderStatus (pair, orderId) {
+  async getOrder (pair, orderId) {
     assert(this.apiKey, 'Please provide api key')
     assert(this.apiSecret, 'Please provide api secret')
     assert(pair, 'Please provide pair')

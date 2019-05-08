@@ -33,7 +33,7 @@ const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
       - [getOrders](#getorders)
       - [createOrder](#createorder)
       - [cancelOrder](#cancelorder)
-      - [getOrderStatus](#getorderstatus)
+      - [getOrder](#getorder)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -501,20 +501,20 @@ cancelOrder()
 
 </details>
 
-#### getOrderStatus
+#### getOrder
 
 ```js
-let getOrderStatus = async () => {
+let getOrder = async () => {
   try {
     let orderID = 123
-    let result = await bitopro.getOrderStatus('btc_twd', orderID)
+    let result = await bitopro.getOrder('btc_twd', orderID)
     console.log(result)
   } catch (e) {
     console.log(e)
   }
 }
 
-getOrderStatus()
+getOrder()
 ```
 
 <details>
