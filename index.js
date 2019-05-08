@@ -42,18 +42,8 @@ class BitoPro {
     return res.data
   }
 
-  async getTicker (pair, isV1 = false) {
-    assert(pair, 'Please provide pair')
+  async getTickers (pair = '') {
     let url = this.baseUrl + '/tickers/' + pair
-    if (isV1) {
-      url = this.baseUrl + '/ticker/' + pair
-    }
-    let res = await axios.get(url)
-    return res.data
-  }
-
-  async getTickers () {
-    let url = this.baseUrl + '/tickers'
     let res = await axios.get(url)
     return res.data
   }

@@ -10,7 +10,6 @@ SDK for the [BitoPro](https://www.bitopro.com/) API.
     - [Rate Limit](#rate-limit)
     - [Public REST Endpoints](#public-rest-endpoints)
       - [getOrderBook](#getorderbook)
-      - [getTicker](#getticker)
       - [getTickers](#gettickers)
       - [getTrades](#gettrades)
     - [Authenticated REST Endpoints](#authenticated-rest-endpoints)
@@ -105,48 +104,18 @@ getOrderBook()
 ```
 </details>
 
-
-#### getTicker
-
-```js
-let getTicker = async () => {
-  try {
-    let ticker = await bitopro.getTicker('btc_twd')
-    console.log(ticker)
-  } catch (e) {
-    console.log(e)
-  }
-}
-
-getTicker()
-```
-
-<details>
-<summary>Output</summary>
-
-```js
-{
-  "data": {
-    "pair": "btc_twd",
-    "lastPrice": "180500.00000000",
-    "isBuyer": true,
-    "priceChange24hr": "4.93",
-    "volume24hr": "94.44971788",
-    "high24hr": "181500.00000000",
-    "low24hr": "173010.00000000"
-  }
-}
-```
-
-</details>
-
 #### getTickers
 
 ```js
 let getTickers = async () => {
   try {
+    // all tickers
     let tickers = await bitopro.getTickers()
     console.log(tickers)
+
+    // single ticker
+    let ticker = await bitopro.getTickers('btc_twd')
+    console.log(ticker)
   } catch (e) {
     console.log(e)
   }
@@ -159,6 +128,7 @@ getTickers()
 <summary>Output</summary>
 
 ```js
+// all tickers
 {
   "data": [
     {
@@ -189,6 +159,19 @@ getTickers()
       "low24hr": "159.94000000"
     }
   ]
+}
+
+// single ticker
+{
+  "data": {
+    "pair": "xem_eth",
+    "lastPrice": "0.00010800",
+    "isBuyer": false,
+    "priceChange24hr": "0",
+    "volume24hr": "0.00000000",
+    "high24hr": "0.00010800",
+    "low24hr": "0.00010800"
+  }
 }
 ```
 
