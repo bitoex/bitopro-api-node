@@ -10,6 +10,7 @@ class BitoPro {
     this.orderSides = ['sell', 'buy']
     this.orderTypes = ['market', 'limit']
     this.baseUrl = 'https://api.bitopro.com/v2'
+    this.sdk = 'node'
   }
 
   async getAccountBalances () {
@@ -27,7 +28,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       }
     }
 
@@ -38,20 +40,38 @@ class BitoPro {
   async getOrderBook (pair) {
     assert(pair, 'Please provide pair')
     let url = this.baseUrl + '/order-book/' + pair
-    let res = await axios.get(url)
+    const options = {
+      headers: {
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.get(url, options)
     return res.data
   }
 
   async getTickers (pair = '') {
     let url = this.baseUrl + '/tickers/' + pair
-    let res = await axios.get(url)
+    const options = {
+      headers: {
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.get(url, options)
     return res.data
   }
 
   async getTrades (pair) {
     assert(pair, 'Please provide pair')
     let url = this.baseUrl + '/trades/' + pair
-    let res = await axios.get(url)
+    const options = {
+      headers: {
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.get(url, options)
     return res.data
   }
 
@@ -73,7 +93,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       }
     }
 
@@ -100,7 +121,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       }
     }
 
@@ -128,7 +150,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       }
     }
 
@@ -161,7 +184,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       }
     }
 
@@ -189,7 +213,8 @@ class BitoPro {
       headers: {
         'X-BITOPRO-APIKEY': this.apiKey,
         'X-BITOPRO-PAYLOAD': payload,
-        'X-BITOPRO-SIGNATURE': signature
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
       },
       data: body
     }
