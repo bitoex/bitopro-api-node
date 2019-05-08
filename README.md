@@ -56,7 +56,7 @@ The tick size of all pairs is 0.00000001, which means you can trade all pairs on
 
 #### Amount precision
 
-The same as price precision but you should be aware the [Minimum order amount](#minimum-order-amount).
+The same as price precision but you should be aware the [minimum order amount](#minimum-order-amount).
 
 ### Minimum order amount
 
