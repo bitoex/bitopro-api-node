@@ -21,6 +21,7 @@ const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
 - [bitopro-api-node](#bitopro-api-node)
     - [Installation](#installation)
     - [Getting started](#getting-started)
+    - [Rate Limit](#rate-limit)
     - [Public REST Endpoints](#public-rest-endpoints)
       - [getOrderBook](#getorderbook)
       - [getTicker](#getticker)
@@ -35,6 +36,13 @@ const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
       - [getOrderStatus](#getorderstatus)
   - [Contributing](#contributing)
   - [License](#license)
+
+### Rate Limit
+
+| Types | Rate Limit |
+|---|---|
+|  Public API | 600 requests per minute per IP |
+|  Authenticated API | 600 requests per minute per IP/600 requests per minute per user|
 
 ### Public REST Endpoints
 
