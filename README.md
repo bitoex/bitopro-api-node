@@ -8,6 +8,10 @@ SDK for the [BitoPro](https://www.bitopro.com/) API.
     - [Installation](#installation)
     - [Getting started](#getting-started)
     - [Rate Limit](#rate-limit)
+    - [Precisions](#precisions)
+      - [Price precision](#price-precision)
+      - [Amount precision](#amount-precision)
+    - [Minimum order amount](#minimum-order-amount)
     - [Public REST Endpoints](#public-rest-endpoints)
       - [getOrderBook](#getorderbook)
       - [getTickers](#gettickers)
@@ -43,6 +47,20 @@ const bitopro = new BitoPro('your_api_key', 'your_api_secret', 'your_email')
 |---|---|
 |  Public API | 600 requests per minute per IP |
 |  Authenticated API | 600 requests per minute per IP/600 requests per minute per user|
+
+### Precisions
+
+#### Price precision
+
+The tick size of all pairs is 0.00000001, which means you can trade all pairs only for prices that are a multiple of 0.00000001. For example, you could place a buy BTC/TWD order at price 180,070.12345678. but you will fail to open an order at price 180,070.123456789.
+
+#### Amount precision
+
+The same as price precision but you should be aware the [Minimum order amount](#minimum-order-amount).
+
+### Minimum order amount
+
+Checkout the [official settings](https://www.bitopro.com/fees) of minimum amount.
 
 ### Public REST Endpoints
 
