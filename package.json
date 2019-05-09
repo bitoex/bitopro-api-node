@@ -1,8 +1,8 @@
 {
   "name": "bitopro-api-node",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "BitoPro node.js SDK.",
-  "main": "index.js",
+  "main": "src",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -25,5 +25,8 @@
   "homepage": "https://github.com/bitoex/bitopro-api-node#readme",
   "dependencies": {
     "axios": "^0.18.0"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0"
   }
 }
