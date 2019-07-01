@@ -167,9 +167,9 @@ class BitoPro {
     assert(order.pair, 'Please provide pair')
     assert(order.price, 'Please provide price')
     assert(order.timestamp, 'Please provide timestamp')
-    assert(this.orderSides.includes(order.action), 'Parameter `side` must be buy or sell')
+    assert(this.orderSides.includes(order.action.toLowerCase()), 'Parameter `side` must be buy or sell')
     assert(order.type, 'Please provide type')
-    assert(this.orderTypes.includes(order.type), 'Parameter `type` must be market or limit')
+    assert(this.orderTypes.includes(order.type.toLowerCase()), 'Parameter `type` must be market or limit')
 
     let url = this.baseUrl + '/orders/' + order.pair
 
