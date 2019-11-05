@@ -10,7 +10,96 @@ class BitoPro {
     this.orderSides = ['sell', 'buy']
     this.orderTypes = ['market', 'limit']
     this.baseUrl = 'https://api.bitopro.com/v2'
+    this.mobileBaseUrl = 'https://mobile-api.bitopro.com/v2'
     this.sdk = 'node'
+  }
+
+  async getWatchingPrices (pair = null) {
+    let url = this.mobileBaseUrl + '/preference/watching/price/' + pair
+    const nonce = Date.now()
+    const body = { identity: this.email, nonce }
+    const payload = Buffer.from(JSON.stringify(body)).toString('base64')
+
+    const signature = crypto
+      .createHmac('sha384', this.apiSecret)
+      .update(payload)
+      .digest('hex')
+
+    const options = {
+      headers: {
+        'X-BITOPRO-APIKEY': this.apiKey,
+        'X-BITOPRO-PAYLOAD': payload,
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.get(url, options)
+    return res.data
+  }
+
+  async addWatchingPrice (pair = null, action = null, price = null) {
+    assert(pair, 'Please provide pair')
+    assert(action, `Action must be 'BUY' or 'SELL'`)
+    assert(price, 'Please provide price in string format')
+    let url = this.mobileBaseUrl + '/preference/watching/price/' + pair
+    const nonce = Date.now()
+    const body = {
+      identity: this.email,
+      nonce: nonce,
+      action: action.toUpperCase(),
+      price: price.toString()
+    }
+    const payload = Buffer.from(JSON.stringify(body)).toString('base64')
+
+    const signature = crypto
+      .createHmac('sha384', this.apiSecret)
+      .update(payload)
+      .digest('hex')
+
+    const options = {
+      headers: {
+        'X-BITOPRO-APIKEY': this.apiKey,
+        'X-BITOPRO-PAYLOAD': payload,
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.post(url, body, options)
+    return res.data
+  }
+
+  async removeWatchingPrice (pair = null, action = null, price = null) {
+    assert(pair, 'Please provide pair')
+    assert(action, `Action must be 'BUY' or 'SELL'`)
+    assert(price, 'Please provide price in string format')
+    let url = this.mobileBaseUrl + `/preference/watching/price/${pair}/${action}/${price}`
+    const nonce = Date.now()
+    const body = {
+      identity: this.email,
+      nonce: nonce,
+      action: action.toUpperCase(),
+      price: price.toString()
+    }
+    const payload = Buffer.from(JSON.stringify(body)).toString('base64')
+
+    const signature = crypto
+      .createHmac('sha384', this.apiSecret)
+      .update(payload)
+      .digest('hex')
+
+    const options = {
+      headers: {
+        'X-BITOPRO-APIKEY': this.apiKey,
+        'X-BITOPRO-PAYLOAD': payload,
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.delete(url, options)
+    return res.data
   }
 
   async getAccountBalances () {
