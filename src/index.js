@@ -9,9 +9,57 @@ class BitoPro {
     this.email = email
     this.orderSides = ['sell', 'buy']
     this.orderTypes = ['market', 'limit']
-    this.baseUrl = 'https://api.bitopro.com/v2'
-    this.mobileBaseUrl = 'https://mobile-api.bitopro.com/v2'
+    this.baseUrl = 'https://api.bitopro.com/v3'
+    this.mobileBaseUrl = 'https://mobile-api.bitopro.com/v3'
     this.sdk = 'node'
+  }
+
+  async enableWatchingPrices () {
+    let url = this.mobileBaseUrl + '/preference/watching/price/enable'
+    const nonce = Date.now()
+    const body = { identity: this.email, nonce }
+    const payload = Buffer.from(JSON.stringify(body)).toString('base64')
+
+    const signature = crypto
+      .createHmac('sha384', this.apiSecret)
+      .update(payload)
+      .digest('hex')
+
+    const options = {
+      headers: {
+        'X-BITOPRO-APIKEY': this.apiKey,
+        'X-BITOPRO-PAYLOAD': payload,
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.patch(url, body, options)
+    return res.data
+  }
+
+  async disableWatchingPrices () {
+    let url = this.mobileBaseUrl + '/preference/watching/price/disable'
+    const nonce = Date.now()
+    const body = { identity: this.email, nonce }
+    const payload = Buffer.from(JSON.stringify(body)).toString('base64')
+
+    const signature = crypto
+      .createHmac('sha384', this.apiSecret)
+      .update(payload)
+      .digest('hex')
+
+    const options = {
+      headers: {
+        'X-BITOPRO-APIKEY': this.apiKey,
+        'X-BITOPRO-PAYLOAD': payload,
+        'X-BITOPRO-SIGNATURE': signature,
+        'X-BITOPRO-API': this.sdk
+      }
+    }
+
+    let res = await axios.patch(url, body, options)
+    return res.data
   }
 
   async getWatchingPrices (pair = null) {
