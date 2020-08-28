@@ -174,9 +174,9 @@ class BitoPro {
     return res.data
   }
 
-  async getOrderBook (pair) {
+  async getOrderBook (pair, limit = 5) {
     assert(pair, 'Please provide pair')
-    let url = this.baseUrl + '/order-book/' + pair
+    let url = `${this.baseUrl}/order-book/${pair}?limit=${limit}`
     const options = {
       headers: {
         'X-BITOPRO-API': this.sdk
