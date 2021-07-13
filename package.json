@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/bitoex/bitopro-api-node#readme",
   "dependencies": {
-    "axios": "^0.19.0"
+    "axios": "^0.21.1"
   },
   "devDependencies": {
     "eslint": "^5.16.0"
